@@ -1,1 +1,939 @@
-# a
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed AI | Visionary Profile & Empire Blueprint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #020208;
+            --card-bg: rgba(10, 15, 30, 0.85);
+            --card-border: rgba(56, 189, 248, 0.25);
+            --cyan: #38bdf8;
+            --blue: #2563eb;
+            --gold: #f59e0b;
+            --gold-glow: rgba(245, 158, 11, 0.4);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --glow: rgba(56, 189, 248, 0.3);
+            --green: #10b981;
+            --red: #ef4444;
+            --purple: #a855f7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            position: relative;
+        }
+
+        /* Deep Space Animated Background Elements */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(1px 1px at 10px 10px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 150px 80px, #38bdf8, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 300px 250px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 450px 120px, #a855f7, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 600px 350px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 800px 500px, #f59e0b, rgba(0,0,0,0));
+            background-size: 550px 550px;
+            animation: spaceDrift 100s linear infinite;
+        }
+
+        @keyframes spaceDrift {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
+        }
+
+        /* Deep Space Nebula Glows */
+        .bg-glow-1 {
+            position: fixed;
+            top: -20%;
+            left: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(56, 189, 248, 0.1) 40%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -20%;
+            right: -20%;
+            width: 850px;
+            height: 850px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(37, 99, 235, 0.15) 45%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Full Width Container Setup */
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            background: var(--card-bg);
+            border: none;
+            border-radius: 0;
+            padding: 40px 20px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), var(--gold), transparent);
+        }
+
+        /* Header Section */
+        .header-profile {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .logo-badge {
+            width: 90px;
+            height: 90px;
+            border-radius: 22px;
+            background: #ffffff;
+            border: 2px solid var(--cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 35px var(--glow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            padding: 6px;
+            margin: 0 auto;
+        }
+
+        .logo-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-pulse {
+            position: absolute;
+            top: -6px; left: -6px; right: -6px; bottom: -6px;
+            border-radius: 28px;
+            border: 2px solid var(--cyan);
+            opacity: 0.6;
+            animation: pulse 2.5s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            100% { transform: scale(1.25); opacity: 0; }
+        }
+
+        .animated-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 20%, var(--cyan) 60%, var(--purple) 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .subtitle-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: var(--cyan);
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Countdown Box */
+        .countdown-box {
+            background: linear-gradient(180deg, rgba(10, 15, 30, 0.95), rgba(2, 2, 8, 0.95));
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 20px;
+            padding: 20px 12px;
+            text-align: center;
+            margin: 25px 0 35px 0;
+            position: relative;
+            box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9), 0 0 25px var(--gold-glow);
+            width: 100%;
+        }
+
+        .countdown-title {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            margin-bottom: 14px;
+            font-weight: 800;
+            line-height: 1.4;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 8px;
+            width: 100%;
+        }
+
+        .timer-segment {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 10px 4px;
+        }
+
+        .timer-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+        }
+
+        .timer-label {
+            font-size: 0.6em;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* Content Cards Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            width: 100%;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 20px;
+            transition: all 0.35s ease;
+            position: relative;
+            width: 100%;
+        }
+
+        .card:hover {
+            border-color: var(--cyan);
+            background: rgba(56, 189, 248, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-icon {
+            font-size: 1.3em;
+            background: rgba(255, 255, 255, 0.05);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--cyan);
+            font-size: 1em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+
+        .card-text {
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 0.95em;
+            font-weight: 400;
+        }
+
+        .highlight-gold {
+            border-color: rgba(245, 158, 11, 0.35);
+        }
+
+        .highlight-gold:hover {
+            border-color: var(--gold);
+            background: rgba(245, 158, 11, 0.04);
+        }
+
+        .highlight-gold .card-title {
+            color: var(--gold);
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85em;
+        }
+
+        .btn-link:hover {
+            box-shadow: 0 0 20px var(--glow);
+            transform: translateY(-2px);
+        }
+
+        /* Interactive Sections: Quiz, Game, Review */
+        .interactive-section {
+            margin-top: 25px;
+            background: rgba(10, 15, 30, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .interactive-title {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--cyan);
+            font-size: 1.1em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .game-desc {
+            color: var(--text-sub);
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .score-pill {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Quiz Styles */
+        .quiz-opt-btn {
+            display: block;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            text-align: left;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .quiz-opt-btn:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--cyan);
+        }
+
+        /* Cyber Tap Game Styles */
+        .game-canvas {
+            background: rgba(2, 2, 8, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 200px;
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .target-node {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--cyan), var(--blue));
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px var(--cyan);
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .target-node:active {
+            transform: scale(0.85);
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            border: none;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85em;
+            width: 100%;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        /* Contact Section Styles */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(10, 15, 30, 0.9), rgba(20, 30, 60, 0.8));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 20px;
+            padding: 22px;
+            margin-top: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        .contact-title {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--gold);
+            font-size: 1.1em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .contact-desc {
+            color: var(--text-sub);
+            font-size: 0.85em;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            word-break: break-all;
+        }
+
+        .contact-item:hover {
+            border-color: var(--cyan);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Review Styles */
+        .star-rating {
+            font-size: 1.6em;
+            color: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .star-rating .star.active {
+            color: var(--gold);
+            text-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            background: rgba(2, 2, 8, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px;
+            color: #fff;
+            font-family: inherit;
+            margin-bottom: 10px;
+            outline: none;
+            font-size: 0.9em;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 10px var(--glow);
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--gold);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+        }
+
+        .copyright-footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.75em;
+            color: var(--text-sub);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 18px;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-container"></div>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="container">
+        
+        <!-- Header Section -->
+        <div class="header-profile">
+            <div class="logo-wrapper">
+                <div class="logo-pulse"></div>
+                <div class="logo-badge">
+                    <img src="moody.jpeg" alt="Ahmed AI Icon">
+                </div>
+            </div>
+            <h1 class="animated-title">Ahmed AI<br>Company Profile 🚀</h1>
+            <div class="subtitle-badge">Future Engineer: Ahmed</div>
+        </div>
+
+        <!-- Futuristic Countdown -->
+        <div class="countdown-box">
+            <div class="countdown-title">Time Remaining Until World Dominance & The Big Goal (2038)</div>
+            <div class="timer-grid">
+                <div class="timer-segment">
+                    <div class="timer-value" id="years">--</div>
+                    <div class="timer-label">Years</div>
+                </div>
+                <div class="timer-segment">
+                    <div class="timer-value" id="days">--</div>
+                    <div class="timer-label">Days</div>
+                </div>
+                <div class="timer-segment">
+                    <div class="timer-value" id="hours">--</div>
+                    <div class="timer-label">Hours</div>
+                </div>
+                <div class="timer-segment">
+                    <div class="timer-value" id="minutes">--</div>
+                    <div class="timer-label">Mins</div>
+                </div>
+                <div class="timer-segment">
+                    <div class="timer-value" id="seconds">--</div>
+                    <div class="timer-label">Secs</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Cards -->
+        <div class="content-grid">
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">👁️‍🗨️</div>
+                    <div class="card-title">Master Strategic Vision</div>
+                </div>
+                <div class="card-text">
+                    My destiny is mapped out: I am evolving into a world-class Engineer whose expertise will be universally demanded. I design and architect autonomous robotics while authoring the advanced code powering them. Through relentless mastery and disciplined study, I will surpass conventional limits, outperform figures like Elon Musk, and shape the technological future of the planet.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🆔</div>
+                    <div class="card-title">Corporate Identity & Brand</div>
+                </div>
+                <div class="card-text">
+                    I am building a global technology powerhouse named <strong>Ahmed AI</strong>. My brand is anchored by our iconic visual mark—a sleek, custom architectural monogram combining the letters of my name to represent the future of artificial intelligence and advanced engineering.
+                </div>
+            </div>
+
+            <div class="card highlight-gold">
+                <div class="card-header">
+                    <div class="card-icon" style="border-color: rgba(245, 158, 11, 0.4);">🏆</div>
+                    <div class="card-title">Track Record & Trophies</div>
+                </div>
+                <div class="card-text">
+                    My relentless drive is already proven through hard evidence. I have earned multiple championship medals and taken home top championship cups. My engineering portfolio already boasts functional high-tech prototypes, including a smart monorail system, a variable smart fan, and complex automated hardware.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💻</div>
+                    <div class="card-title">Our Work & Software Projects</div>
+                </div>
+                <div class="card-text">
+                    Explore our active software developments, interactive games, and artificial intelligence prototypes built directly under the Ahmed AI umbrella.
+                    <br>
+                    <a href="https://ahmedramyshafik.com/easy-collector/" target="_blank" class="btn-link">
+                        🎮 Launch Easy Collector Game 🚀
+                    </a>
+                </div>
+            </div>
+
+            <div class="card highlight-gold">
+                <div class="card-header">
+                    <div class="card-icon" style="border-color: rgba(245, 158, 11, 0.4);">📅</div>
+                    <div class="card-title">The 2038 Milestone</div>
+                </div>
+                <div class="card-text">
+                    The ultimate breakthrough triggers in 2038. Reaching the age of twenty-five unlocks complete adulthood, granting me full mastery to handle high-risk, industrial-grade technologies. By this targeted deadline, I will reach ultimate financial dominance and scale Ahmed AI into a multi-billion dollar enterprise.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Interactive Section: Quiz -->
+        <div class="interactive-section">
+            <div class="interactive-title">
+                <span>⚡ Ahmed AI Mastery Quiz</span>
+                <span class="score-pill">Score: <span id="quizScore">0</span></span>
+            </div>
+            <div id="quizContainer">
+                <p id="quizQuestion" style="margin-bottom:12px; font-weight:600; font-size:0.9em;"></p>
+                <div id="quizOptions"></div>
+            </div>
+        </div>
+
+        <!-- Interactive Section: Cyber Tap Game -->
+        <div class="interactive-section">
+            <div class="interactive-title">
+                <span>🤖 Cyber-Bot Reactor Game</span>
+                <span class="score-pill">High Score: <span id="gameHighScore">0</span></span>
+            </div>
+            <div class="game-desc">
+                <strong>Objective:</strong> Test your reaction speed and focus! High-frequency robot energy cores appear randomly in the reactor core. Tap or click each glowing energy node as quickly as possible before it destabilizes and vanishes to score points and calibrate the robot system.
+            </div>
+            <div class="game-canvas" id="gameArea">
+                <button class="btn-action" id="startGameBtn" onclick="startGame()">Initialize Game</button>
+            </div>
+        </div>
+
+        <!-- Contact / Support Box -->
+        <div class="contact-box">
+            <div class="contact-title">❓ Have Any Questions?</div>
+            <div class="contact-desc">Reach out directly to Engineer Ahmed for technical inquiries, project support, or business proposals:</div>
+            <div class="contact-details">
+                <a href="tel:01120338183" class="contact-item">
+                    <span>📞</span> 01120338183
+                </a>
+                <a href="mailto:ahmed.ramy.shafik@gmail.com" class="contact-item">
+                    <span>✉️</span> ahmed.ramy.shafik@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <!-- Interactive Section: Reviews -->
+        <div class="interactive-section">
+            <div class="interactive-title">
+                <span>⭐ Leave Your Feedback</span>
+            </div>
+            <div class="star-rating" id="starContainer">
+                <span class="star" onclick="setRating(1)">★</span>
+                <span class="star" onclick="setRating(2)">★</span>
+                <span class="star" onclick="setRating(3)">★</span>
+                <span class="star" onclick="setRating(4)">★</span>
+                <span class="star" onclick="setRating(5)">★</span>
+            </div>
+            <input type="text" id="reviewerName" placeholder="Enter your name">
+            <textarea id="reviewText" rows="3" placeholder="Write your notes or feedback..."></textarea>
+            <button class="btn-action" onclick="saveReview()">Submit Review</button>
+
+            <div id="reviewDisplay" style="margin-top:15px;"></div>
+        </div>
+
+        <div class="copyright-footer">
+            © 2026 Ahmed AI Technology.<br>Designed & Engineered by Ahmed Ramy.
+        </div>
+    </div>
+
+    <script>
+        /* --- 1. Countdown Timer --- */
+        function updateCountdown() {
+            const target = new Date("January 1, 2038 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff > 0) {
+                const y = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+                const d = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById("years").innerText = String(y).padStart(2, '0');
+                document.getElementById("days").innerText = String(d).padStart(2, '0');
+                document.getElementById("hours").innerText = String(h).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(m).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(s).padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        /* --- 2. Quiz System (Persisted in LocalStorage) --- */
+        const quizData = [
+            { q: "What year will Ahmed AI achieve its massive global breakthrough?", a: "2038", ops: ["2030", "2038", "2045"] },
+            { q: "Which tech figure is Ahmed aiming to outperform?", a: "Elon Musk", ops: ["Bill Gates", "Elon Musk", "Mark Zuckerberg"] },
+            { q: "What physical engineering achievements has Ahmed earned?", a: "Medals, Cups & Prototypes", ops: ["Certificates only", "Medals, Cups & Prototypes", "Online Badges"] }
+        ];
+
+        let quizIndex = parseInt(localStorage.getItem('ahmed_quiz_idx')) || 0;
+        let quizScore = parseInt(localStorage.getItem('ahmed_quiz_score')) || 0;
+
+        function renderQuiz() {
+            const scoreEl = document.getElementById('quizScore');
+            if (scoreEl) scoreEl.innerText = quizScore;
+            
+            const quizContainer = document.getElementById('quizContainer');
+            if (!quizContainer) return;
+
+            if (quizIndex >= quizData.length) {
+                quizContainer.innerHTML = `
+                    <p style="color:var(--gold); font-weight:700; font-size:0.9em; margin-bottom:12px;">🏆 Challenge Completed! Perfect Score Mastered.</p>
+                    <button class="btn-action" onclick="resetQuiz()">Restart Quiz</button>
+                `;
+                return;
+            }
+
+            // Restore HTML structure if it was overwritten on completion
+            quizContainer.innerHTML = `
+                <p id="quizQuestion" style="margin-bottom:12px; font-weight:600; font-size:0.9em;"></p>
+                <div id="quizOptions"></div>
+            `;
+
+            const q = quizData[quizIndex];
+            document.getElementById('quizQuestion').innerText = `Q${quizIndex + 1}: ${q.q}`;
+            const opsDiv = document.getElementById('quizOptions');
+            opsDiv.innerHTML = q.ops.map(o => `<button class="quiz-opt-btn" onclick="checkQuiz('${o}')">${o}</button>`).join('');
+        }
+
+        function checkQuiz(ans) {
+            if (ans === quizData[quizIndex].a) {
+                quizScore += 100;
+            }
+            quizIndex++;
+            localStorage.setItem('ahmed_quiz_idx', quizIndex);
+            localStorage.setItem('ahmed_quiz_score', quizScore);
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            quizIndex = 0;
+            quizScore = 0;
+            localStorage.setItem('ahmed_quiz_idx', 0);
+            localStorage.setItem('ahmed_quiz_score', 0);
+            renderQuiz();
+        }
+
+        /* --- 3. Cyber Tap Mini-Game (Persisted High Score) --- */
+        let gameHighScore = parseInt(localStorage.getItem('ahmed_game_highscore')) || 0;
+        let currentScore = 0;
+        let gameTimer = null;
+        let targetTimer = null;
+
+        document.getElementById('gameHighScore').innerText = gameHighScore;
+
+        function startGame() {
+            currentScore = 0;
+            const area = document.getElementById('gameArea');
+            area.innerHTML = '';
+            
+            spawnNode();
+            
+            // 15 Second Speed Game
+            gameTimer = setTimeout(() => {
+                clearTimeout(targetTimer);
+                area.innerHTML = `
+                    <div style="text-align:center; padding:10px;">
+                        <p style="color:var(--gold); font-weight:800; font-size:1em;">TIME'S UP! Score: ${currentScore}</p>
+                        <button class="btn-action" style="margin-top:10px;" onclick="startGame()">Play Again</button>
+                    </div>
+                `;
+                if (currentScore > gameHighScore) {
+                    gameHighScore = currentScore;
+                    localStorage.setItem('ahmed_game_highscore', gameHighScore);
+                    document.getElementById('gameHighScore').innerText = gameHighScore;
+                }
+            }, 15000);
+        }
+
+        function spawnNode() {
+            const area = document.getElementById('gameArea');
+            area.innerHTML = '';
+            const node = document.createElement('div');
+            node.className = 'target-node';
+            
+            const x = Math.floor(Math.random() * (area.clientWidth - 50));
+            const y = Math.floor(Math.random() * (area.clientHeight - 50));
+            node.style.left = Math.max(5, x) + 'px';
+            node.style.top = Math.max(5, y) + 'px';
+            
+            node.onclick = (e) => {
+                e.stopPropagation();
+                currentScore += 10;
+                clearTimeout(targetTimer);
+                spawnNode();
+            };
+            
+            area.appendChild(node);
+
+            // Auto respawn node if missed
+            targetTimer = setTimeout(() => {
+                spawnNode();
+            }, 900);
+        }
+
+        /* --- 4. Review System (Persisted in LocalStorage) --- */
+        let selectedStars = 0;
+
+        function setRating(n) {
+            selectedStars = n;
+            const stars = document.querySelectorAll('#starContainer .star');
+            stars.forEach((s, idx) => {
+                if (idx < n) s.classList.add('active');
+                else s.classList.remove('active');
+            });
+        }
+
+        function saveReview() {
+            const name = document.getElementById('reviewerName').value.trim() || 'Anonymous Engineer';
+            const text = document.getElementById('reviewText').value.trim();
+            if (selectedStars === 0) return alert('Please select a star rating!');
+
+            const reviews = JSON.parse(localStorage.getItem('ahmed_reviews')) || [];
+            reviews.unshift({ name, stars: selectedStars, text, date: new Date().toLocaleDateString() });
+            localStorage.setItem('ahmed_reviews', JSON.stringify(reviews));
+
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewText').value = '';
+            setRating(0);
+            renderReviews();
+        }
+
+        function renderReviews() {
+            const display = document.getElementById('reviewDisplay');
+            const reviews = JSON.parse(localStorage.getItem('ahmed_reviews')) || [];
+            if (reviews.length === 0) {
+                display.innerHTML = '<p style="color:var(--text-sub); font-size:0.8em;">No reviews submitted yet. Be the first!</p>';
+                return;
+            }
+            display.innerHTML = reviews.map(r => `
+                <div class="review-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <strong style="font-size:0.85em;">${r.name}</strong>
+                        <span style="color:var(--gold); font-size:0.85em;">${'★'.repeat(r.stars)}</span>
+                    </div>
+                    ${r.text ? `<p style="color:#cbd5e1; font-size:0.85em; margin-top:4px;">"${r.text}"</p>` : ''}
+                    <small style="color:var(--text-sub); font-size:0.65em;">${r.date}</small>
+                </div>
+            `).join('');
+        }
+
+        // Initialize on page load
+        renderQuiz();
+        renderReviews();
+    </script>
+</body>
+</html>
