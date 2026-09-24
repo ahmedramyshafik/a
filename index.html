@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed AI | Visionary Profile & Empire Blueprint</title>
+    <title>Ahmed AI | Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     
+    <!-- Firebase App & Database Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
     <style>
         :root {
             --bg-dark: #020208;
@@ -20,8 +24,6 @@
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --glow: rgba(56, 189, 248, 0.3);
-            --green: #10b981;
-            --red: #ef4444;
             --purple: #a855f7;
         }
 
@@ -44,11 +46,9 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 0;
             position: relative;
         }
 
-        /* Deep Space Animated Background Elements */
         .stars-container {
             position: fixed;
             top: 0;
@@ -73,7 +73,6 @@
             to { background-position: 1000px 1000px; }
         }
 
-        /* Deep Space Nebula Glows */
         .bg-glow-1 {
             position: fixed;
             top: -20%;
@@ -96,13 +95,10 @@
             pointer-events: none;
         }
 
-        /* Full Width Container Setup */
         .container {
             width: 100%;
             min-height: 100vh;
             background: var(--card-bg);
-            border: none;
-            border-radius: 0;
             padding: 40px 20px;
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -120,7 +116,6 @@
             background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), var(--gold), transparent);
         }
 
-        /* Header Section */
         .header-profile {
             text-align: center;
             margin-bottom: 30px;
@@ -177,7 +172,6 @@
             background: linear-gradient(135deg, #ffffff 20%, var(--cyan) 60%, var(--purple) 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
             margin-bottom: 8px;
             text-transform: uppercase;
             line-height: 1.2;
@@ -194,10 +188,8 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
         }
 
-        /* Countdown Box */
         .countdown-box {
             background: linear-gradient(180deg, rgba(10, 15, 30, 0.95), rgba(2, 2, 8, 0.95));
             border: 1px solid rgba(245, 158, 11, 0.4);
@@ -205,9 +197,7 @@
             padding: 20px 12px;
             text-align: center;
             margin: 25px 0 35px 0;
-            position: relative;
             box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9), 0 0 25px var(--gold-glow);
-            width: 100%;
         }
 
         .countdown-title {
@@ -217,14 +207,12 @@
             color: var(--gold);
             margin-bottom: 14px;
             font-weight: 800;
-            line-height: 1.4;
         }
 
         .timer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
             gap: 8px;
-            width: 100%;
         }
 
         .timer-segment {
@@ -239,7 +227,6 @@
             font-size: 1.4em;
             font-weight: 700;
             color: #ffffff;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
         }
 
         .timer-label {
@@ -247,16 +234,13 @@
             color: var(--text-sub);
             text-transform: uppercase;
             margin-top: 4px;
-            letter-spacing: 0.5px;
             font-weight: 600;
         }
 
-        /* Content Cards Grid */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 18px;
-            width: 100%;
         }
 
         .card {
@@ -265,8 +249,6 @@
             border-radius: 18px;
             padding: 20px;
             transition: all 0.35s ease;
-            position: relative;
-            width: 100%;
         }
 
         .card:hover {
@@ -303,14 +285,12 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            line-height: 1.3;
         }
 
         .card-text {
             color: #cbd5e1;
             line-height: 1.6;
             font-size: 0.95em;
-            font-weight: 400;
         }
 
         .highlight-gold {
@@ -326,7 +306,7 @@
             color: var(--gold);
         }
 
-        .btn-link {
+        .btn-link, .btn-action {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -340,25 +320,25 @@
             padding: 12px 18px;
             border-radius: 12px;
             margin-top: 15px;
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.85em;
         }
 
-        .btn-link:hover {
+        .btn-link:hover, .btn-action:hover {
             box-shadow: 0 0 20px var(--glow);
             transform: translateY(-2px);
         }
 
-        /* Interactive Sections: Quiz, Game, Review */
         .interactive-section {
             margin-top: 25px;
             background: rgba(10, 15, 30, 0.7);
             border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 20px;
             padding: 20px;
-            width: 100%;
         }
 
         .interactive-title {
@@ -370,17 +350,10 @@
             letter-spacing: 1px;
             margin-bottom: 12px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-        }
-
-        .game-desc {
-            color: var(--text-sub);
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin-bottom: 16px;
         }
 
         .score-pill {
@@ -393,7 +366,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Quiz Styles */
         .quiz-opt-btn {
             display: block;
             width: 100%;
@@ -415,7 +387,13 @@
             border-color: var(--cyan);
         }
 
-        /* Cyber Tap Game Styles */
+        .game-desc {
+            color: var(--text-sub);
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
         .game-canvas {
             background: rgba(2, 2, 8, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -427,7 +405,6 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            width: 100%;
         }
 
         .target-node {
@@ -439,34 +416,8 @@
             box-shadow: 0 0 20px var(--cyan);
             position: absolute;
             cursor: pointer;
-            transition: transform 0.1s;
         }
 
-        .target-node:active {
-            transform: scale(0.85);
-        }
-
-        .btn-action {
-            background: linear-gradient(135deg, var(--cyan), var(--blue));
-            border: none;
-            color: #fff;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            padding: 12px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85em;
-            width: 100%;
-        }
-
-        .btn-action:hover {
-            box-shadow: 0 0 20px var(--glow);
-        }
-
-        /* Contact Section Styles */
         .contact-box {
             background: linear-gradient(135deg, rgba(10, 15, 30, 0.9), rgba(20, 30, 60, 0.8));
             border: 1px solid rgba(56, 189, 248, 0.3);
@@ -474,8 +425,6 @@
             padding: 22px;
             margin-top: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            width: 100%;
         }
 
         .contact-title {
@@ -484,7 +433,6 @@
             font-size: 1.1em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
             margin-bottom: 8px;
         }
 
@@ -492,14 +440,12 @@
             color: var(--text-sub);
             font-size: 0.85em;
             margin-bottom: 16px;
-            line-height: 1.5;
         }
 
         .contact-details {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            width: 100%;
         }
 
         .contact-item {
@@ -516,7 +462,6 @@
             font-weight: 600;
             font-size: 0.9em;
             transition: all 0.3s;
-            word-break: break-all;
         }
 
         .contact-item:hover {
@@ -524,7 +469,6 @@
             background: rgba(56, 189, 248, 0.1);
         }
 
-        /* Review Styles */
         .star-rating {
             font-size: 1.6em;
             color: rgba(255, 255, 255, 0.2);
@@ -563,6 +507,13 @@
             border-radius: 8px;
             padding: 12px;
             margin-top: 10px;
+            user-select: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .review-card:active {
+            background: rgba(245, 158, 11, 0.1);
         }
 
         .copyright-footer {
@@ -572,9 +523,7 @@
             color: var(--text-sub);
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding-top: 18px;
-            letter-spacing: 0.5px;
             font-weight: 600;
-            line-height: 1.5;
         }
     </style>
 </head>
@@ -586,7 +535,6 @@
 
     <div class="container">
         
-        <!-- Header Section -->
         <div class="header-profile">
             <div class="logo-wrapper">
                 <div class="logo-pulse"></div>
@@ -594,40 +542,22 @@
                     <img src="moody.jpeg" alt="Ahmed AI Icon">
                 </div>
             </div>
-            <h1 class="animated-title">Ahmed AI<br>Company Profile 🚀</h1>
+            <h1 class="animated-title">Ahmed AI 🚀</h1>
             <div class="subtitle-badge">Future Engineer: Ahmed</div>
         </div>
 
-        <!-- Futuristic Countdown -->
         <div class="countdown-box">
             <div class="countdown-title">Time Remaining Until World Dominance & The Big Goal (2038)</div>
             <div class="timer-grid">
-                <div class="timer-segment">
-                    <div class="timer-value" id="years">--</div>
-                    <div class="timer-label">Years</div>
-                </div>
-                <div class="timer-segment">
-                    <div class="timer-value" id="days">--</div>
-                    <div class="timer-label">Days</div>
-                </div>
-                <div class="timer-segment">
-                    <div class="timer-value" id="hours">--</div>
-                    <div class="timer-label">Hours</div>
-                </div>
-                <div class="timer-segment">
-                    <div class="timer-value" id="minutes">--</div>
-                    <div class="timer-label">Mins</div>
-                </div>
-                <div class="timer-segment">
-                    <div class="timer-value" id="seconds">--</div>
-                    <div class="timer-label">Secs</div>
-                </div>
+                <div class="timer-segment"><div class="timer-value" id="years">--</div><div class="timer-label">Years</div></div>
+                <div class="timer-segment"><div class="timer-value" id="days">--</div><div class="timer-label">Days</div></div>
+                <div class="timer-segment"><div class="timer-value" id="hours">--</div><div class="timer-label">Hours</div></div>
+                <div class="timer-segment"><div class="timer-value" id="minutes">--</div><div class="timer-label">Mins</div></div>
+                <div class="timer-segment"><div class="timer-value" id="seconds">--</div><div class="timer-label">Secs</div></div>
             </div>
         </div>
 
-        <!-- Content Cards -->
         <div class="content-grid">
-            
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">👁️‍🗨️</div>
@@ -681,10 +611,8 @@
                     The ultimate breakthrough triggers in 2038. Reaching the age of twenty-five unlocks complete adulthood, granting me full mastery to handle high-risk, industrial-grade technologies. By this targeted deadline, I will reach ultimate financial dominance and scale Ahmed AI into a multi-billion dollar enterprise.
                 </div>
             </div>
-
         </div>
 
-        <!-- Interactive Section: Quiz -->
         <div class="interactive-section">
             <div class="interactive-title">
                 <span>⚡ Ahmed AI Mastery Quiz</span>
@@ -696,35 +624,28 @@
             </div>
         </div>
 
-        <!-- Interactive Section: Cyber Tap Game -->
         <div class="interactive-section">
             <div class="interactive-title">
                 <span>🤖 Cyber-Bot Reactor Game</span>
                 <span class="score-pill">High Score: <span id="gameHighScore">0</span></span>
             </div>
             <div class="game-desc">
-                <strong>Objective:</strong> Test your reaction speed and focus! High-frequency robot energy cores appear randomly in the reactor core. Tap or click each glowing energy node as quickly as possible before it destabilizes and vanishes to score points and calibrate the robot system.
+                <strong>Objective:</strong> Test your reaction speed and focus! Tap or click each glowing energy node as quickly as possible before it vanishes.
             </div>
             <div class="game-canvas" id="gameArea">
                 <button class="btn-action" id="startGameBtn" onclick="startGame()">Initialize Game</button>
             </div>
         </div>
 
-        <!-- Contact / Support Box -->
         <div class="contact-box">
             <div class="contact-title">❓ Have Any Questions?</div>
-            <div class="contact-desc">Reach out directly to Engineer Ahmed for technical inquiries, project support, or business proposals:</div>
+            <div class="contact-desc">Reach out directly to Engineer Ahmed for technical inquiries or project proposals:</div>
             <div class="contact-details">
-                <a href="tel:01120338183" class="contact-item">
-                    <span>📞</span> 01120338183
-                </a>
-                <a href="mailto:ahmed.ramy.shafik@gmail.com" class="contact-item">
-                    <span>✉️</span> ahmed.ramy.shafik@gmail.com
-                </a>
+                <a href="tel:01120338183" class="contact-item"><span>📞</span> 01120338183</a>
+                <a href="mailto:ahmed.ramy.shafik@gmail.com" class="contact-item"><span>✉️</span> ahmed.ramy.shafik@gmail.com</a>
             </div>
         </div>
 
-        <!-- Interactive Section: Reviews -->
         <div class="interactive-section">
             <div class="interactive-title">
                 <span>⭐ Leave Your Feedback</span>
@@ -749,30 +670,46 @@
     </div>
 
     <script>
-        /* --- 1. Countdown Timer --- */
+        let database = null;
+
+        // Initialize Firebase Specifically for Easy Collector Game
+        try {
+            const firebaseConfig = {
+                apiKey: "AIzaSyC8LeObFrdT2OgqjsB8OPvAzXY0uLv8NCY",
+                authDomain: "easy-collector-game.firebaseapp.com",
+                databaseURL: "https://easy-collector-game-default-rtdb.firebaseio.com",
+                projectId: "easy-collector-game",
+                storageBucket: "easy-collector-game.firebasestorage.app",
+                messagingSenderId: "1074666790918",
+                appId: "1:1074666790918:web:fc7de41a00dbe90b81e387",
+                measurementId: "G-TNN2PDGXTH"
+            };
+
+            if (typeof firebase !== 'undefined') {
+                if (!firebase.apps.length) {
+                    firebase.initializeApp(firebaseConfig);
+                }
+                database = firebase.database();
+            }
+        } catch (e) {
+            console.warn("Firebase initialization issue:", e);
+        }
+
         function updateCountdown() {
             const target = new Date("January 1, 2038 00:00:00").getTime();
-            const now = new Date().getTime();
-            const diff = target - now;
+            const diff = target - new Date().getTime();
 
             if (diff > 0) {
-                const y = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-                const d = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById("years").innerText = String(y).padStart(2, '0');
-                document.getElementById("days").innerText = String(d).padStart(2, '0');
-                document.getElementById("hours").innerText = String(h).padStart(2, '0');
-                document.getElementById("minutes").innerText = String(m).padStart(2, '0');
-                document.getElementById("seconds").innerText = String(s).padStart(2, '0');
+                document.getElementById("years").innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25))).padStart(2, '0');
+                document.getElementById("days").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
             }
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        /* --- 2. Quiz System (Persisted in LocalStorage) --- */
         const quizData = [
             { q: "What year will Ahmed AI achieve its massive global breakthrough?", a: "2038", ops: ["2030", "2038", "2045"] },
             { q: "Which tech figure is Ahmed aiming to outperform?", a: "Elon Musk", ops: ["Bill Gates", "Elon Musk", "Mark Zuckerberg"] },
@@ -797,7 +734,6 @@
                 return;
             }
 
-            // Restore HTML structure if it was overwritten on completion
             quizContainer.innerHTML = `
                 <p id="quizQuestion" style="margin-bottom:12px; font-weight:600; font-size:0.9em;"></p>
                 <div id="quizOptions"></div>
@@ -810,9 +746,7 @@
         }
 
         function checkQuiz(ans) {
-            if (ans === quizData[quizIndex].a) {
-                quizScore += 100;
-            }
+            if (ans === quizData[quizIndex].a) quizScore += 100;
             quizIndex++;
             localStorage.setItem('ahmed_quiz_idx', quizIndex);
             localStorage.setItem('ahmed_quiz_score', quizScore);
@@ -826,8 +760,8 @@
             localStorage.setItem('ahmed_quiz_score', 0);
             renderQuiz();
         }
+        renderQuiz();
 
-        /* --- 3. Cyber Tap Mini-Game (Persisted High Score) --- */
         let gameHighScore = parseInt(localStorage.getItem('ahmed_game_highscore')) || 0;
         let currentScore = 0;
         let gameTimer = null;
@@ -839,10 +773,8 @@
             currentScore = 0;
             const area = document.getElementById('gameArea');
             area.innerHTML = '';
-            
             spawnNode();
             
-            // 15 Second Speed Game
             gameTimer = setTimeout(() => {
                 clearTimeout(targetTimer);
                 area.innerHTML = `
@@ -878,62 +810,149 @@
             };
             
             area.appendChild(node);
-
-            // Auto respawn node if missed
-            targetTimer = setTimeout(() => {
-                spawnNode();
-            }, 900);
+            targetTimer = setTimeout(() => { spawnNode(); }, 900);
         }
 
-        /* --- 4. Review System (Persisted in LocalStorage) --- */
         let selectedStars = 0;
+        let pressTimer;
 
         function setRating(n) {
             selectedStars = n;
             const stars = document.querySelectorAll('#starContainer .star');
-            stars.forEach((s, idx) => {
-                if (idx < n) s.classList.add('active');
-                else s.classList.remove('active');
-            });
+            stars.forEach((s, idx) => { s.classList.toggle('active', idx < n); });
         }
 
+        // Fixed Review Save & Direct Display System
         function saveReview() {
-            const name = document.getElementById('reviewerName').value.trim() || 'Anonymous Engineer';
-            const text = document.getElementById('reviewText').value.trim();
-            if (selectedStars === 0) return alert('Please select a star rating!');
+            const nameInput = document.getElementById('reviewerName');
+            const textInput = document.getElementById('reviewText');
 
-            const reviews = JSON.parse(localStorage.getItem('ahmed_reviews')) || [];
-            reviews.unshift({ name, stars: selectedStars, text, date: new Date().toLocaleDateString() });
-            localStorage.setItem('ahmed_reviews', JSON.stringify(reviews));
+            const name = nameInput.value.trim() || 'Anonymous Player';
+            const text = textInput.value.trim();
 
-            document.getElementById('reviewerName').value = '';
-            document.getElementById('reviewText').value = '';
-            setRating(0);
-            renderReviews();
-        }
-
-        function renderReviews() {
-            const display = document.getElementById('reviewDisplay');
-            const reviews = JSON.parse(localStorage.getItem('ahmed_reviews')) || [];
-            if (reviews.length === 0) {
-                display.innerHTML = '<p style="color:var(--text-sub); font-size:0.8em;">No reviews submitted yet. Be the first!</p>';
+            if (selectedStars === 0) {
+                alert('Please select a star rating!');
                 return;
             }
-            display.innerHTML = reviews.map(r => `
-                <div class="review-card">
+
+            const reviewData = {
+                name: name,
+                stars: selectedStars,
+                text: text,
+                date: new Date().toLocaleDateString()
+            };
+
+            // 1. Send to Firebase database
+            if (database) {
+                const newRef = database.ref('reviews').push();
+                reviewData.key = newRef.key;
+                newRef.set(reviewData, function(error) {
+                    if (error) {
+                        console.error("Firebase submit error:", error);
+                    }
+                });
+            } else {
+                // Fallback local storage
+                reviewData.key = 'local_' + Date.now();
+                let localReviews = JSON.parse(localStorage.getItem('local_easy_collector_reviews') || '[]');
+                localReviews.push(reviewData);
+                localStorage.setItem('local_easy_collector_reviews', JSON.stringify(localReviews));
+                renderReviewsList();
+            }
+
+            nameInput.value = '';
+            textInput.value = '';
+            setRating(0);
+            alert("Review submitted successfully!");
+        }
+
+        function renderReviewsList() {
+            const display = document.getElementById('reviewDisplay');
+            if (!display) return;
+            display.innerHTML = '';
+
+            const localReviews = JSON.parse(localStorage.getItem('local_easy_collector_reviews') || '[]');
+
+            if (localReviews.length === 0) {
+                display.innerHTML = '<p style="color:var(--text-sub); font-size:0.8em;">No reviews yet. Be the first to leave one!</p>';
+                return;
+            }
+
+            localReviews.slice().reverse().forEach((r) => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.innerHTML = `
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <strong style="font-size:0.85em;">${r.name}</strong>
                         <span style="color:var(--gold); font-size:0.85em;">${'★'.repeat(r.stars)}</span>
                     </div>
                     ${r.text ? `<p style="color:#cbd5e1; font-size:0.85em; margin-top:4px;">"${r.text}"</p>` : ''}
                     <small style="color:var(--text-sub); font-size:0.65em;">${r.date}</small>
-                </div>
-            `).join('');
+                `;
+
+                // 10-second hold events for deletion
+                const startHoldEvent = () => startHold(r.key);
+                const cancelHoldEvent = () => cancelHold();
+
+                card.addEventListener('mousedown', startHoldEvent);
+                card.addEventListener('mouseup', cancelHoldEvent);
+                card.addEventListener('mouseleave', cancelHoldEvent);
+
+                card.addEventListener('touchstart', startHoldEvent, { passive: true });
+                card.addEventListener('touchend', cancelHoldEvent);
+                card.addEventListener('touchcancel', cancelHoldEvent);
+
+                display.appendChild(card);
+            });
         }
 
-        // Initialize on page load
-        renderQuiz();
-        renderReviews();
+        // Listen for live updates from Firebase
+        if (database) {
+            database.ref('reviews').on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    const fbList = Object.keys(data).map(k => {
+                        return { ...data[k], key: k };
+                    });
+                    localStorage.setItem('local_easy_collector_reviews', JSON.stringify(fbList));
+                } else {
+                    localStorage.setItem('local_easy_collector_reviews', JSON.stringify([]));
+                }
+                renderReviewsList();
+            });
+        } else {
+            renderReviewsList();
+        }
+
+        function startHold(key) {
+            cancelHold();
+            pressTimer = setTimeout(() => {
+                promptAndDelete(key);
+            }, 10000);
+        }
+
+        function cancelHold() {
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+        }
+
+        function promptAndDelete(key) {
+            const password = prompt("ADMIN ACCESS: Enter password to delete this review:");
+            if (password === "5613") {
+                if (database && key && !key.startsWith('local_')) {
+                    database.ref('reviews/' + key).remove();
+                }
+                let localReviews = JSON.parse(localStorage.getItem('local_easy_collector_reviews') || '[]');
+                localReviews = localReviews.filter(item => item.key !== key);
+                localStorage.setItem('local_easy_collector_reviews', JSON.stringify(localReviews));
+                renderReviewsList();
+                alert("Review deleted successfully!");
+            } else if (password !== null) {
+                alert("Incorrect password!");
+            }
+        }
     </script>
 </body>
 </html>
